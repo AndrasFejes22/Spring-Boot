@@ -20,10 +20,10 @@ import java.util.List;
 //localhost:8080/SPRING-Web/users
 
 //!!! ezek máshogy néznek ki aszerint hogy itt a UserController-ban hogy néz ki a get metódus!
-//localhost:8080/SPRING-Web/user?id=10
-//localhost:8080/SPRING-Web/post?id=10
-//http://localhost:8080/SPRING-Web/user/10
-//http://localhost:8080/SPRING-Web/users?userId=10 --> ez csak beállítja a current usert
+//localhost:8080/user?id=10
+//localhost:8080/post?id=10
+//http://localhost:8080/user/10
+//http://localhost:8080/users?userId=10 --> ez csak beállítja a current usert
 
 @Controller
 public class UserController {
@@ -95,7 +95,7 @@ public class UserController {
     @PostMapping("/user") //ez a legcelravezetobb
     public String addUser(CreateUserRequest request) {
         User createdUser = userService.createUser(request);
-        return "redirect:/SPRING-Web/user/" + createdUser.getId();
+        return "redirect:/user/" + createdUser.getId();
     }
 
 

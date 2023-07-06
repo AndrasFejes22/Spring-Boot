@@ -10,7 +10,7 @@
         <label for="name">Név: </label><input type="text" th:field="*{username}" id="name" autocomplete="off"/><br />
         <label for="status">Státusz: </label>
         <select th:field="*{status}" id="status">
-            <option th:each="type : ${T(web.model.UserStatus).values()}"
+            <option th:each="type : ${T(com.example.demo.model.UserStatus).values()}"
                     th:value="${type}" th:text="${type.name()}">ACTIVE</option>
         </select>
         <br/>
