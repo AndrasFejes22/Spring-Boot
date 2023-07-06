@@ -6,7 +6,7 @@
 <body>
 <h1>Felhasználó létrehozása</h1>
 <div>
-    <form action="#" th:action="@{/SPRING-Web/user}" th:object="${user}" method="post">
+    <form action="#" th:action="@{/user}" th:object="${user}" method="post">
         <label for="name">Név: </label><input type="text" th:field="*{username}" id="name" autocomplete="off"/><br />
         <label for="status">Státusz: </label>
         <select th:field="*{status}" id="status">
@@ -18,7 +18,7 @@
     </form>
 </div>
 
-<a href="users.html" th:href="@{/SPRING-Web/users}">Vissza</a>
+<a href="users.html" th:href="@{/users}">Vissza</a>
 
 </body>
 </html>

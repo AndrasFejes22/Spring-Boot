@@ -27,7 +27,7 @@
         <td>
             <a href="user.html"
                th:text="${user.id}"
-               th:href="@{/SPRING-Web/user/{id}(id=${user.id})}">0</a>
+               th:href="@{/user/{id}(id=${user.id})}">0</a>
         </td>
         <td th:text="${user.username}">John Doe</td>
         <td th:text="${user.status}">ACTIVE</td>
@@ -36,6 +36,6 @@
     </tbody>
 </table>
 <a href="add_user.html"
-   th:href="@{/SPRING-Web/addUser}">Új felhasználó</a>
+   th:href="@{/addUser}">Új felhasználó</a>
 </body>
 </html>
