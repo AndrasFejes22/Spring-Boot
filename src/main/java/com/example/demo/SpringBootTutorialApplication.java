@@ -36,6 +36,7 @@ public class SpringBootTutorialApplication {
 				.bannerMode(Banner.Mode.OFF)
 				.lazyInitialization(true)
 				.listeners(event -> logEvent(event))
+				//.profiles("local")
 				.run(args);
 	}
 

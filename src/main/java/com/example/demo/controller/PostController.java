@@ -33,9 +33,13 @@ public class PostController {
         return postService.createNewPost(request);
     }
 
+
+    //settings.posts.publishing.delay=30m
+    // 30 m = 30 minutes, felismeri, lehet Java Time (Duration)
     @GetMapping(value = "/post/settings")
     public PostProperties getPostSettings() {
-        postProperties.getPublishing().getStatus(); // ..ignored, ennek ellenére kiírja a statust és a delay-t IS...:(
+        //postProperties.getPublishing().getStatus(); // ..ignored, ennek ellenére kiírja a statust és a delay-t IS...:(
+        postProperties.getPublishing().getDelay(); // ..ignored, ennek ellenére kiírja a statust és a delay-t IS...:(
         return postProperties;
     }
 
