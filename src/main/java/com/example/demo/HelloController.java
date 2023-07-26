@@ -21,7 +21,7 @@ public class HelloController {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    // ezek most nem mennek mert a Run/Debug Configurationsban nincsenek beállítva itt az IDEA-ban ([Spring v40] video, 16:14)
+    // ezek most nem mennek mert a Run/Debug Configurationsban nincsenek beállítva itt az IDEA-ban (Program arguments) ([Spring v40] video, 16:14)
     //@Value("${hello}")
     //private List<String> helloArgs;
 

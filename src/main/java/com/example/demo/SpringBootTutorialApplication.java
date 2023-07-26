@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import com.example.demo.model.UserContext;
+import com.example.demo.model.properties.PostProperties;
 import com.example.demo.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.context.annotation.SessionScope;
@@ -22,6 +24,7 @@ import java.util.Optional;
 //http://localhost:8080/hello
 
 @SpringBootApplication
+@EnableConfigurationProperties(PostProperties.class)
 public class SpringBootTutorialApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringBootTutorialApplication.class);
