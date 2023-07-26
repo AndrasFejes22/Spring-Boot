@@ -35,6 +35,7 @@ public class PostController {
 
     @GetMapping(value = "/post/settings")
     public PostProperties getPostSettings() {
+        postProperties.getPublishing().getStatus(); // ..ignored, ennek ellenére kiírja a statust és a delay-t IS...:(
         return postProperties;
     }
 
