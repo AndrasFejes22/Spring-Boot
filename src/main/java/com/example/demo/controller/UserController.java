@@ -10,6 +10,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -98,6 +99,14 @@ public class UserController {
     public String addUser(CreateUserRequest request) {
         User createdUser = userService.createUser(request);
         return "redirect:/user/" + createdUser.getId();
+    }
+
+    //kvázi kivételkezelő metódus
+    @ExceptionHandler(NotFoundException.class)
+    @ResponseStatus(code = HttpStatus.NOT_FOUND)
+    public String handleNotFound(NotFoundException e, Model model) {
+        model.addAttribute("errorMessage", e.getMessage());
+        return "error/4xx";
     }
 
 
