@@ -3,6 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.model.UserContext;
+import com.example.demo.model.exception.NotFoundException;
 import com.example.demo.model.request.CreateUserRequest;
 import com.example.demo.service.UserService;
 import jakarta.servlet.http.Cookie;
@@ -66,7 +67,8 @@ public class UserController {
     // get user by ID_3: (session stuff)
     @GetMapping("/user/{id}")
     public String getUserById(Model model, @PathVariable long id, HttpSession session) {
-        User user = userService.getUserById(id).orElse(null);
+        //User user = userService.getUserById(id).orElse(null); // ha olyan ID ami nem létezik
+        User user = userService.getUserById(id).orElseThrow(() -> new NotFoundException("User not found with id: " + id));
         model.addAttribute("user", user);
 
         if (user != null) {
