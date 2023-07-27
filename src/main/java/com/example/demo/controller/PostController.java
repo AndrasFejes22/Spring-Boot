@@ -1,10 +1,14 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Post;
+import com.example.demo.model.exception.NotFoundException;
 import com.example.demo.model.properties.PostProperties;
 import com.example.demo.model.request.CreatePostRequest;
+import com.example.demo.model.response.ApiError;
 import com.example.demo.service.PostService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,7 +31,9 @@ public class PostController {
     public Post getPostById(@PathVariable long id) {
         //Post post = postService.getPostById(id).orElse(null);
         // exception:
-        Post post = postService.getPostById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        //Post post = postService.getPostById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        Post post = postService.getPostById(id)
+                .orElseThrow(() -> new NotFoundException("Post not found with id: " + id));
         return post;
     }
 
@@ -45,6 +51,13 @@ public class PostController {
         //postProperties.getPublishing().getStatus(); // ..ignored, ennek ellenére kiírja a statust és a delay-t IS...:(
         postProperties.getPublishing().getDelay(); // ..ignored, ennek ellenére kiírja a statust és a delay-t IS...:(
         return postProperties;
+    }
+
+
+    //kvázi kivételkezelő metódus (jsont ad vissza)
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ApiError> handleNotFound(NotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiError(e.getMessage()));
     }
 
 
