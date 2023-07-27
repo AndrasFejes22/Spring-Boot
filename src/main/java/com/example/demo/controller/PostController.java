@@ -4,7 +4,9 @@ import com.example.demo.model.Post;
 import com.example.demo.model.properties.PostProperties;
 import com.example.demo.model.request.CreatePostRequest;
 import com.example.demo.service.PostService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 
 //@Controller
@@ -23,7 +25,9 @@ public class PostController {
     //@ResponseBody
     @GetMapping(value = "/post/{id}")
     public Post getPostById(@PathVariable long id) {
-        Post post = postService.getPostById(id).orElse(null);
+        //Post post = postService.getPostById(id).orElse(null);
+        // exception:
+        Post post = postService.getPostById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
         return post;
     }
 
