@@ -54,11 +54,13 @@ public class PostController {
     }
 
 
-    //kvázi kivételkezelő metódus (jsont ad vissza)
+    /*
+    //kvázi kivételkezelő metódus (jsont ad vissza) /átrakva a GlobalExceptionHandler-be/
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ApiError> handleNotFound(NotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ApiError(e.getMessage()));
     }
+    */
 
 
 
